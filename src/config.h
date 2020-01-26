@@ -2,8 +2,14 @@
 
 #include "TeensyTimerTool.h"
 
+#include "ITimerModule.h"
+#include "Teensy/TMR2/TMR2.h"
+
+
 namespace TeensyTimerTool
 {
+    extern ITimerModule *TMR2_1, *TMR2_2;
+    extern ITimerModule* tPool[];
 
 #if defined(T4_0)
     constexpr TimerGenerator* timerPool[] = {GPT1, GPT2, TMR1, TMR2, TMR3, TMR4, TCK};

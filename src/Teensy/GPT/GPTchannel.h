@@ -11,7 +11,7 @@ public:
     inline GptChannel(IMXRT_GPT_t *, callback_t *);
     inline virtual ~GptChannel();
 
-    inline void begin(callback_t cb, unsigned tcnt, bool periodic);
+    inline void begin(callback_t cb, uint32_t tcnt, bool periodic);
     inline void trigger(uint32_t);
     inline void setPeriod(uint32_t) {}
 
@@ -29,7 +29,7 @@ GptChannel::GptChannel(IMXRT_GPT_t *registers, callback_t *cbStorage)
 {
 }
 
-void GptChannel::begin(callback_t cb, unsigned micros, bool periodic)
+void GptChannel::begin(callback_t cb, uint32_t micros, bool periodic)
 {
     isPeriodic = periodic;
     setCallback(cb);

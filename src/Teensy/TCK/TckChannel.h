@@ -12,7 +12,7 @@ namespace TeensyTimerTool
         inline TckChannel() { triggered = false; }
         inline virtual ~TckChannel(){};
 
-        inline void begin(callback_t cb, unsigned period, bool periodic)
+        inline void begin(callback_t cb, uint32_t period, bool periodic)
         {
             triggered = false;
             this->periodic = periodic;

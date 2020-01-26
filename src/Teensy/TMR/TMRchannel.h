@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../ITimerChannel.h"
+#include "imxrt.h"
 
 namespace TeensyTimerTool
 {
@@ -10,11 +11,11 @@ public:
     inline TmrChannel(IMXRT_TMR_CH_t *regs, callback_t *cbStorage);
     inline virtual ~TmrChannel();
 
-    inline void begin(callback_t cb, unsigned tcnt, bool periodic)
+    inline void begin(callback_t cb, uint32_t tcnt, bool periodic)
     {
         double t = tcnt * (150.0 / 128.0);
         uint16_t reload = t > 0xFFFF ? 0xFFFF : (uint16_t)t - 1;
-        
+
         regs->CTRL = 0x0000;
         regs->LOAD = 0x0000;
         regs->COMP1 = reload;
